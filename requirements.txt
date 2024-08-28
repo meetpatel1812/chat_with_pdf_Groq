@@ -6,4 +6,4 @@ langchain-groq
 faiss-cpu
 python-dotenv
 transformers
-sentence-transformer
+sentence-transformers
