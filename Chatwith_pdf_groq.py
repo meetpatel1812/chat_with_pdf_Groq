@@ -29,10 +29,14 @@ def get_text_chunks(text):
     return chunks
 
 def get_vector_store(text_chunks):
-    # Use Hugging Face Embeddings with a pre-trained model
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
-    vector_store.save_local("faiss_index")
+    # Ensure that the HuggingFace embeddings model is correctly initialized
+    try:
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
+        vector_store.save_local("faiss_index")
+    except ImportError as e:
+        st.error("Required libraries for HuggingFace embeddings are not installed. Please install the 'transformers' package.")
+        raise e
 
 def get_conversational_chain():
     prompt_template = """
