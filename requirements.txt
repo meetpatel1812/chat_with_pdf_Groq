@@ -5,4 +5,4 @@ langchain-community
 langchain-groq
 faiss-cpu
 python-dotenv
-ollama
+transformers
