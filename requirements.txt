@@ -1,8 +1,7 @@
 streamlit
-groq
-langchain
-langchain_community
 PyPDF2
+langchain
+langchain-community
 langchain-groq
-ollama
+faiss-cpu
 python-dotenv
