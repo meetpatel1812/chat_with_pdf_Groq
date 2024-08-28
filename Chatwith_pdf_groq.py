@@ -2,7 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain_groq import ChatGroq
 from langchain.chains.question_answering import load_qa_chain
@@ -29,8 +29,8 @@ def get_text_chunks(text):
     return chunks
 
 def get_vector_store(text_chunks):
-    # Use OllamaEmbeddings with the NOMIC embedding model
-    embeddings = OllamaEmbeddings(model="nomic-embed-text")
+    # Use Hugging Face Embeddings with a pre-trained model
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
 
@@ -54,7 +54,7 @@ def get_conversational_chain():
     return chain
 
 def user_input(user_question):
-    embeddings = OllamaEmbeddings(model="nomic-embed-text")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     
     # Load the FAISS vector store with dangerous deserialization allowed
     new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
