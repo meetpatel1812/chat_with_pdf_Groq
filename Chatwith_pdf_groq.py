@@ -8,9 +8,7 @@ from langchain_groq import ChatGroq
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+st.set_page_config(page_icon="💬", page_title="Chat with PDF by Meet Patel")
 hide_streamlit_style = """
     <style>
     #GithubIcon {visibility: hidden;}
@@ -21,6 +19,8 @@ hide_streamlit_style = """
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize GROQ API key
 groq_api_key = os.getenv("GROQ_API_KEY")
