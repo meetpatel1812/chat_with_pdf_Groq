@@ -1,15 +1,6 @@
 import streamlit as st
-st.set_page_config(page_icon="💬", page_title="Chat with PDF by Meet Patel")
-hide_streamlit_style = """
-    <style>
-    #GithubIcon {visibility: hidden;}
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    .stApp {overflow: hidden;}
-    header {visibility: hidden;}
-    </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
@@ -85,6 +76,16 @@ def user_input(user_question):
 
 def main():
     st.set_page_config(page_icon="💬", page_title="PDF Chat with GROQ")
+    hide_streamlit_style = """
+    <style>
+    #GithubIcon {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stApp {overflow: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
     st.header("Chat with PDF using GROQ💁")
 
     # Initialize message history
