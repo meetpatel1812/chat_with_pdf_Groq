@@ -11,6 +11,16 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+hide_streamlit_style = """
+    <style>
+    #GithubIcon {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stApp {overflow: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Initialize GROQ API key
 groq_api_key = os.getenv("GROQ_API_KEY")
