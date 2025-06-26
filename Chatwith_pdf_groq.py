@@ -51,7 +51,7 @@ def get_conversational_chain():
     """
 
     model = ChatGroq(
-        groq_api_key=groq_api_key, model_name="meta-llama/llama-prompt-guard-2-86m", temperature=0.7
+        groq_api_key=groq_api_key, model_name="deepseek-r1-distill-llama-70b", temperature=0.7
     )
 
     prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
